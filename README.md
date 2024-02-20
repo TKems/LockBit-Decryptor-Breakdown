@@ -9,7 +9,7 @@ Getting started, the decryptor is hosted on [No More Ransom](https://www.nomorer
 ## Ghidra
 I loaded the file into Ghidra to get started and found quite a few functions. This isn't suprising for a Windows binary and often makes a mess of attempting to find custom code. Looking at the strings output, I noticed a lot of nonsense strings (or strings without much format or meaning). This signals to me that the binary is encrypted or compressed. Digging around some more, I found some code that dropped a file or folder into the `TEMP` directory and had the name `onefile`. A quick Google search and some reading lead me to [Nuitka](https://nuitka.net/index.html). If I had run Detect It Easy first, I would have been able to see this much faster.
 
-![Entropy of the file as viewed in Detect It Easy](https://github.com/TKems/LockBit-Decryptor-Breakdown/raw/master/images/entropy-of-PE.png "Entropy of the file showing compression")
+![Entropy of the file as viewed in Detect It Easy](https://github.com/TKems/LockBit-Decryptor-Breakdown/blob/ffaeb2d537bbe892f8123a42e6270799facd25ab/images/entropy-of-PE.png "Entropy of the file showing compression")
 
 ## Nuitka
 Nuitka has a handy feature to create a single file output. In order to do this, Zstandard compression is used. This can be verified in the `check_decryption_id.exe` binary as the header matches the [Nuitka compression header](https://github.com/Nuitka/Nuitka/blob/develop/nuitka/tools/onefile_compressor/OnefileCompressor.py) `KAY` and the following bytes (big endian) match the Zstandard [magic bytes](https://github.com/facebook/zstd/blob/dev/doc/zstd_compression_format.md) `0xFD2FB528`.
