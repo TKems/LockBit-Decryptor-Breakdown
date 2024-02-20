@@ -34,7 +34,7 @@ Continuing down, I found a reference to SHA-256 that confirmed my assumptions. H
 4. If found, tell the user to contact an email address (I'm not listing it here for privacy/spam reasons).
 5. If not found, tell the user to come back later...
 
-![Message shown to users if the Decryption ID matches](https://github.com/TKems/LockBit-Decryptor-Breakdown/raw/master/images/message-in-exe-censored.png "It's a match! Email us for your key")
+![Message shown to users if the Decryption ID matches](https://github.com/TKems/LockBit-Decryptor-Breakdown/blob/72e2b2f0ea883a7a0db87421aa70daf7cffc1d14/images/message-in-exe-censored.png "It's a match! Email us for your key")
 
 # Conclusions
 While not the most interseting file I've reversed, I think this is a good example of how to pack software without the need for overly complex encryption or obfuscation. I would have liked the authors to include the Python source, but understand that it might not be possible.
